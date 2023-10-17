@@ -59,7 +59,7 @@ int flags, int width, int precision, int size);
 /* Functions for specifiers */
 int get_flags(const char *format, int *i);
 int field_width(const char *format, int *i, va_list arg_list);
-int get_precision(const char *format, int *i, va_list list);
+int g_precision(const char *format, int *i, va_list arg_ist);
 int get_size(const char *format, int *i);
 
 
