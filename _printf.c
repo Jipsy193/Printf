@@ -1,55 +1,55 @@
 #include "main.h"
+void print_buffer(char buffer[], int *buff_val);
 /**
- * *
- *
- *
- *
- *
- *
- */
+* _printf - Printf function
+* @format: format.
+* Return: character
+*/
 int _printf(const char *format, ...)
 {
-int char_count = 0;
+int v, printed = 0, printed_chara = 0;
+int flags, width, precision, size, buff_val = 0;
 va_list num;
+char buffer[BUFF_SIZE];
+if (format == NULL)
+return (-1);
 va_start(num, format);
-while (*format)
+for (v = 0; format && format[v] != '\0'; i++)
 {
-if (*format == '%')
+if (format[v] != '%')
 {
-format++;
-if (*format == '\0') break;
-if (*format == 'c')
-{
-int c = va_arg(num, int);
-write(1, &c, 1);
-char_count++;
-}
-else if (*format == 's')
-{
-const char *str = va_arg(num, const char *);
-int str_len = strlen(str);
-write(1, str, str_len);
-char_count += str_len;
-}
-else if (*format == '%')
-{
-write(1, "%", 1);
-char_count++;
+buffer[buff_val++] = format[v];
+if (buff_val == BUFF_SIZE)
+print_buffer(buffer, &buff_val);
+/* write(1, &format[v], 1);*/
+printed_chars++;
 }
 else
 {
-write(1, "%", 1);
-write(1, format, 1);
-char_count += 2;
+print_buffer(buffer, &buff_val);
+flags = get_flags(format, &v);
+width = get_width(format, &v, num);
+precision = get_precision(format, &v, num);
+size = get_size(format, &v);
+++V;
+printed = handle_print(format, &v, num, buffer, flags, width, precision, size);
+if (printed == -1)
+return (-1);
+printed_chars += printed;
 }
 }
-else
-{
-write(1, format, 1);
-char_count++;
-}
-format++;
-}
+print_buffer(buffer, &buff_val);
 va_end(num);
-return char_count;
+return (printed_chara);
+}
+/**
+* print_buffer - Prints the contents of the buffer if it exist
+* @buffer: Array of chars
+* @buff_val: Index at which to add next char, represents the length.
+*/
+void print_buffer(char buffer[], int *buff_val)
+{
+if (*buff_val > 0)
+write(1, &buffer[0], *buff_val);
+*buff_val = 0;
 }
