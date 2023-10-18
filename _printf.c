@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 int i, printed = 0, printed_chars = 0;
 int flags, width, precision, size, buff_val = 0;
 va_list arg_list;
-char buffer[BUFFER_SIZE];
+char buffer[BUFF_SIZE];
 if (format == NULL)
 return (-1);
 va_start(arg_list, format);
@@ -19,7 +19,7 @@ for (i = 0; format && format[i] != '\0'; i++)
 if (format[i] != '%')
 {
 buffer[buff_val++] = format[i];
-if (buff_val == BUFFER_SIZE)
+if (buff_val == BUFF_SIZE)
 print_buffer(buffer, &buff_val);
 /* write(1, &format[i], 1);*/
 printed_chars++;
@@ -32,7 +32,7 @@ width = get_width(format, &i, arg_list);
 precision = get_precision(format, &i, arg_list);
 size = get_size(format, &i);
 ++i;
-printed = handle_print(format, &ind, list, buffer,
+printed = handle_print(format, &i, arg_list, buffer,
 flags, width, precision, size);
 if (printed == -1)
 return (-1);
