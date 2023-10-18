@@ -107,6 +107,7 @@ int print_hexa(va_list arg_types, char map_to[], char buffer[],
 int flags, char flag_ch, int width, int precision, int size)
 {
 int i = BUFFER_SIZE - 2;
+
 unsigned long int num = va_arg(arg_types, unsigned long int);
 unsigned long int init_num = num;
 UNUSED(width);
@@ -127,4 +128,3 @@ buffer[i--] = '0';
 i++;
 return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
-
