@@ -1,4 +1,3 @@
-
 #include "main.h"
 void print_buffer(char buffer[], int *buff_val);
 /**
@@ -29,8 +28,8 @@ else
 {
 print_buffer(buffer, &buff_val);
 flags = get_flags(format, &i);
-width = field_width(format, &i,arg_list);
-precision = g_precision(format, &i, arg_list);
+width = get_width(format, &i, arg_list);
+precision = get_precision(format, &i, arg_list);
 size = get_size(format, &i);
 ++i;
 printed = handle_print(format, &ind, list, buffer,

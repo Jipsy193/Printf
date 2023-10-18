@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * g_precision - handles the precision for specifier
+ * get_precision - handles the precision for specifier
  * @format: string to print arguments
  * @i: List of arguments that will be printed.
  * @arg_list: list of arguments.
  *
  * Return: Precision.
  */
-int g_precision(const char *format, int *i, va_list arg_list)
+int get_precision(const char *format, int *i, va_list arg_list)
 {
 	int x = *i + 1;
 	int precision = -1;

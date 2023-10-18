@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * field_width - handles the field width for non-custom specifiers
+ * get_width - handles the field width for non-custom specifiers
  * @format: string to be printed
  * @i: List of arguments to be printed.
  * @arg_list: list of arguments.
  *
  * Return: width.
  */
-int field_width(const char *format, int *i, va_list arg_list)
+int get_width(const char *format, int *i, va_list arg_list)
 {
 	int x;
 	int width = 0;
